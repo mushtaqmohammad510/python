@@ -1,0 +1,12 @@
+[Unit]
+Description=Gunicorn instance to serve myapp
+After=network.target
+
+[Service]
+User=ec2-user
+Group=ec2-user
+WorkingDirectory=/home/ec2-user/myapp
+ExecStart=/home/ec2-user/myapp/venv/bin/gunicorn --config /home/ec2-user/myapp/gunicorn_config.py app:app
+
+[Install]
+WantedBy=multi-user.target
